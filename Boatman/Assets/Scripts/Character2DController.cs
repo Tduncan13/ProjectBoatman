@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Character2DController : MonoBehaviour
 {
-<<<<<<< HEAD
     //  TODO:   
     //          [] Finish Wall Jumping
     //          [] Implement Wall sliding on select walls
@@ -13,56 +12,66 @@ public class Character2DController : MonoBehaviour
     //          [] Implement Partical System for Jumping
 
     private Rigidbody2D rb;
-    public Animator anim;
-    public SpriteRenderer spriteRenderer;
+    private Animator anim;
+    private SpriteRenderer spriteRenderer;
 
     // Camera Tartget Variables
     public Transform cameraTarget;
-    public float aheadAmount, aheadSpeed;
+    public float aheadAmount = 1f, aheadSpeed = 3f;
 
     // Player Movement Variables
-    public float movementSpeed = 1, jumpForce = 1, checkRadius, jumpBufferLength, jumpTime, jumpTimeCount;
-    private float jumpBufferCount;
+    public float movementSpeed = 4, jumpForce = 4, checkRadius = 0.15f, jumpBufferLength = 0.001f, jumpTime = 0.2f;
+    private float jumpBufferCount, jumpTimeCount;
     public bool isRunning, isGrounded, isJumping;
-=======
-    Animator anim;
-    public float MovementSpeed = 1;
-    public float JumpForce = 1;
-    public bool isRunning;
-    private bool turn;
-    private bool facingFront = true;
-    public bool isGrounded;
->>>>>>> parent of dad1ca8... Dynamic Jumping Added. Dynamic Camera System Added. Hang Time Implemented. Jump Buffer Implemented. Wall Sliding Implemented. Working on Wall Jumping...
     public Transform groundCheck;
-    public float checkRadius;
     public LayerMask whatIsGround;
 
 
     // Wall Jump/Slide Variables
-    public bool isTouchingFront;
     public Transform frontCheck;
-    public bool wallSliding;
-    public float wallSlideSpeed;
-    public float wallJumpForceX;
-    public float wallJumpForceY;
+    public float wallSlideSpeed, wallJumpForceX, wallJumpForceY, wallJumpTime, wallJumpCounter;
+    public bool isTouchingFront, wallJumping, wallSliding;
 
-    private Rigidbody2D rb;
+
+    // Hang time Variables
+    public float hangTime = 0.2f;
+    private float hangCounter;
+
 
     private void Start() {
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     private void Update() {
-        
-        // Horizontal character movement controller.
-        var movement = Input.GetAxisRaw("Horizontal");
-        rb.velocity = new Vector2(movement * MovementSpeed, rb.velocity.y);
 
-        isGrounded = Physics2D.OverlapCircle(groundCheck.position, checkRadius, whatIsGround);
-        isTouchingFront = Physics2D.OverlapCircle(frontCheck.position, checkRadius, whatIsGround);
+        if (wallJumpCounter <= 0) {
+            // Horizontal character movement controller.
+            var movement = Input.GetAxisRaw("Horizontal");
+            rb.velocity = new Vector2(movement * movementSpeed, rb.velocity.y);
 
-<<<<<<< HEAD
+            isGrounded = Physics2D.OverlapCircle(groundCheck.position, checkRadius, whatIsGround);
+            isTouchingFront = Physics2D.OverlapCircle(frontCheck.position, checkRadius, whatIsGround);
+
+            // Set animation boolean for running animation. 
+            isRunning = (movement != 0); 
+
+            // Check character movement to get character orientation. 
+            if(movement > 0){
+                spriteRenderer.flipX = false;
+            } else if (movement < 0){
+                spriteRenderer.flipX = true;
+            } 
+
+            // Move Camera Point
+            if(movement != 0){
+                cameraTarget.localPosition = new Vector3(
+                    Mathf.Lerp(cameraTarget.localPosition.x, aheadAmount * movement, aheadSpeed * Time.deltaTime),
+                    cameraTarget.localPosition.y, 
+                    cameraTarget.localPosition.z);
+            }
+
 
             // Manage Hang Time
             if(isGrounded){
@@ -110,36 +119,28 @@ public class Character2DController : MonoBehaviour
                     rb.velocity = new Vector2(-movement * movementSpeed, jumpForce);
                 }
             }
-=======
-        // Set animation boolean for running animation. 
-        isRunning = (movement != 0); 
-        anim.SetBool("isRunning", isRunning);
->>>>>>> parent of dad1ca8... Dynamic Jumping Added. Dynamic Camera System Added. Hang Time Implemented. Jump Buffer Implemented. Wall Sliding Implemented. Working on Wall Jumping...
 
-        // Check character movement to get character orientation. 
-        turn = (movement < 0 && facingFront) ^ (movement > 0 && !facingFront);
-        if(turn){
-            flip();
-        } 
+            if(Input.GetButtonDown("Jump") && wallSliding){
+                wallJumping = true;
+                Invoke("SetWallJumpingToFalse", wallJumpTime);
+            }
 
-        // Character jump controller
-        if(Input.GetButtonDown("Jump") && isGrounded){
-            rb.AddForce(new Vector2(0, JumpForce), ForceMode2D.Impulse);
-        }
+            if (wallJumping){
+                rb.velocity = new Vector2(wallJumpForceX * -movement, wallJumpForceY);
+            }
 
-        if (isTouchingFront == true && isGrounded == false && movement != 0){
-            wallSliding = true;
         } else {
-            wallSliding = false;
+            wallJumpCounter -= Time.deltaTime;
         }
 
-        if(wallSliding){
-            rb.velocity = new Vector2(rb.velocity.x, Mathf.Clamp(rb.velocity.y, -wallSlideSpeed, float.MaxValue));
-        }
+        anim.SetBool("isRunning", isRunning);
     }
 
     void flip(){
-        transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, transform.localScale.z);
-        facingFront = !facingFront;
+        //transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, transform.localScale.z);
+    }
+
+    void SetWallJumpingToFalse(){
+        wallJumping = false;
     }
 }

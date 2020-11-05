@@ -22,17 +22,9 @@ public class CameraFollow2D : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // Cameras current position
-        Vector3 startPos = transform.position;
-
-        // Players current position
-        Vector3 endPos = player.transform.position;
-        endPos.x += posOffSet.x;
-        endPos.y += posOffSet.y;
-        endPos.z += -10;
 
         // This is how you Lerp 
-        transform.position = Vector3.Lerp(startPos, endPos, timeOffSet * Time.deltaTime);
+        transform.position = new Vector3(player.transform.position.x, player.transform.position.y, transform.position.z);
 
         // This is how you use Smooth Dampening. 
         //transform.position = Vector3.SmoothDamp(startPos, endPos, ref velocity, timeOffSet);
