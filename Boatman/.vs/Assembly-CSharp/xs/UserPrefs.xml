@@ -1,0 +1,27 @@
+﻿<Properties>
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/EmptyClass.cs">
+    <Files>
+      <File FileName="Assets/Character2DController.cs" Line="17" Column="28" />
+      <File FileName="Assets/EmptyClass.cs" Line="7" Column="17" NotebookId="1" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="Assembly-CSharp" expanded="True">
+            <Node name="Assembly-CSharp" expanded="True">
+              <Node name="Assets" expanded="True">
+                <Node name="EmptyClass.cs" selected="True" />
+              </Node>
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+</Properties>

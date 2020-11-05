@@ -20,9 +20,9 @@ public class Character2DController : MonoBehaviour
     public float aheadAmount, aheadSpeed;
 
     // Player Movement Variables
-    public float movementSpeed = 1, jumpForce = 1, checkRadius, jumpBufferLength;
+    public float movementSpeed = 1, jumpForce = 1, checkRadius, jumpBufferLength, jumpTime, jumpTimeCount;
     private float jumpBufferCount;
-    public bool isRunning, isGrounded;
+    public bool isRunning, isGrounded, isJumping;
     public Transform groundCheck;
     public LayerMask whatIsGround;
 
@@ -73,6 +73,7 @@ public class Character2DController : MonoBehaviour
                 Debug.Log(cameraTarget.localPosition);
             }
 
+
             // Manage Hang Time
             if(isGrounded){
                 hangCounter = hangTime;
@@ -81,20 +82,28 @@ public class Character2DController : MonoBehaviour
             }
 
             // Manage Jump Buffer
-            if(Input.GetButtonDown("Jump")){
+            if(Input.GetButtonDown("Jump") && isGrounded){
                 jumpBufferCount = jumpBufferLength;
-            } else {
-                jumpBufferCount -= Time.deltaTime;
+                jumpTimeCount = jumpTime;
+                isJumping = true;
             }
-
             // Character jump controller
-            if(jumpBufferCount >= 0 && hangCounter > 0){
-                rb.AddForce(new Vector2(0, jumpForce), ForceMode2D.Impulse);
-                jumpBufferCount = 0;
+            if(Input.GetButton("Jump") && isJumping){
+                if(jumpTimeCount > 0){
+                    rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+                    rb.gravityScale = 0;
+                    jumpBufferCount = 0;
+                    jumpTimeCount -= Time.deltaTime;
+                } else {
+                    rb.gravityScale = 5;
+                    isJumping = false;
+                }
             }
 
-            if(Input.GetButtonUp("Jump") && rb.velocity.y > 0){
-                rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * 0.5f);
+            if((Input.GetButtonUp("Jump") && rb.velocity.y > 0) || jumpTimeCount <= 0){
+                rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y);
+                rb.gravityScale = 5;
+                isJumping = false;
             }
 
             if (isTouchingFront && !isGrounded && movement != 0){
