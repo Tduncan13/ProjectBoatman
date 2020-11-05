@@ -25,7 +25,11 @@ MonoBehaviour:
   m_MinSize: {x: 709, y: 542}
   m_MaxSize: {x: 18004, y: 14021}
   vertical: 0
+<<<<<<< HEAD
   controlID: 20206
+=======
+  controlID: 17853
+>>>>>>> parent of dad1ca8... Dynamic Jumping Added. Dynamic Camera System Added. Hang Time Implemented. Jump Buffer Implemented. Wall Sliding Implemented. Working on Wall Jumping...
 --- !u!114 &2
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -142,7 +146,11 @@ MonoBehaviour:
   m_MinSize: {x: 231, y: 471}
   m_MaxSize: {x: 10001, y: 14021}
   vertical: 1
+<<<<<<< HEAD
   controlID: 20124
+=======
+  controlID: 17829
+>>>>>>> parent of dad1ca8... Dynamic Jumping Added. Dynamic Camera System Added. Hang Time Implemented. Jump Buffer Implemented. Wall Sliding Implemented. Working on Wall Jumping...
 --- !u!114 &4
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -216,7 +224,7 @@ MonoBehaviour:
         m_IsRenaming: 0
         m_OriginalEventType: 11
         m_IsRenamingFilename: 0
-        m_ClientGUIView: {fileID: 4}
+        m_ClientGUIView: {fileID: 0}
       m_SearchString: 
     m_ExpandedScenes: []
     m_CurrenRootInstanceID: 0
@@ -410,7 +418,11 @@ MonoBehaviour:
   m_MinSize: {x: 202, y: 542}
   m_MaxSize: {x: 4002, y: 12042}
   vertical: 1
+<<<<<<< HEAD
   controlID: 20207
+=======
+  controlID: 17854
+>>>>>>> parent of dad1ca8... Dynamic Jumping Added. Dynamic Camera System Added. Hang Time Implemented. Jump Buffer Implemented. Wall Sliding Implemented. Working on Wall Jumping...
 --- !u!114 &9
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -474,9 +486,15 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
+<<<<<<< HEAD
     m_Target: {x: -0.77637464, y: 0.060994394, z: -2.6262212}
     speed: 2
     m_Value: {x: -0.77637464, y: 0.060994394, z: -2.6262212}
+=======
+    m_Target: {x: 4.1677938, y: 2.4667923, z: -2.1933594}
+    speed: 2
+    m_Value: {x: 4.1677938, y: 2.4667923, z: -2.1933594}
+>>>>>>> parent of dad1ca8... Dynamic Jumping Added. Dynamic Camera System Added. Hang Time Implemented. Jump Buffer Implemented. Wall Sliding Implemented. Working on Wall Jumping...
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -526,9 +544,15 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 0, y: 0, z: 0, w: 1}
   m_Size:
+<<<<<<< HEAD
     m_Target: 1.277895
     speed: 2
     m_Value: 1.277895
+=======
+    m_Target: 4.3753057
+    speed: 2
+    m_Value: 4.3753057
+>>>>>>> parent of dad1ca8... Dynamic Jumping Added. Dynamic Camera System Added. Hang Time Implemented. Jump Buffer Implemented. Wall Sliding Implemented. Working on Wall Jumping...
   m_Ortho:
     m_Target: 1
     speed: 2
@@ -652,21 +676,38 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 1
   m_Script: {fileID: 12006, guid: 0000000000000000e000000000000000, type: 0}
+<<<<<<< HEAD
   m_Name: GameView
+=======
+  m_Name: AnimationWindow
+>>>>>>> parent of dad1ca8... Dynamic Jumping Added. Dynamic Camera System Added. Hang Time Implemented. Jump Buffer Implemented. Wall Sliding Implemented. Working on Wall Jumping...
   m_EditorClassIdentifier: 
   m_Children: []
   m_Position:
     serializedVersion: 2
     x: 0
+<<<<<<< HEAD
     y: 0
     width: 1629
     height: 477
   m_MinSize: {x: 200, y: 200}
   m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 2}
+=======
+    y: 969
+    width: 1628
+    height: 421
+  m_MinSize: {x: 102, y: 121}
+  m_MaxSize: {x: 4002, y: 4021}
+  m_ActualView: {fileID: 14}
+>>>>>>> parent of dad1ca8... Dynamic Jumping Added. Dynamic Camera System Added. Hang Time Implemented. Jump Buffer Implemented. Wall Sliding Implemented. Working on Wall Jumping...
   m_Panes:
   - {fileID: 2}
   - {fileID: 14}
+<<<<<<< HEAD
+=======
+  - {fileID: 15}
+>>>>>>> parent of dad1ca8... Dynamic Jumping Added. Dynamic Camera System Added. Hang Time Implemented. Jump Buffer Implemented. Wall Sliding Implemented. Working on Wall Jumping...
   m_Selected: 0
   m_LastSelected: 1
 --- !u!114 &14
@@ -746,9 +787,15 @@ MonoBehaviour:
   m_Pos:
     serializedVersion: 2
     x: 524
+<<<<<<< HEAD
     y: 1133
     width: 1627
     height: 266
+=======
+    y: 1211
+    width: 1627
+    height: 188
+>>>>>>> parent of dad1ca8... Dynamic Jumping Added. Dynamic Camera System Added. Hang Time Implemented. Jump Buffer Implemented. Wall Sliding Implemented. Working on Wall Jumping...
   m_ViewDataDictionary: {fileID: 0}
 --- !u!114 &17
 MonoBehaviour:
@@ -813,9 +860,15 @@ MonoBehaviour:
     m_ControlHash: -371814159
     m_PrefName: Preview_InspectorPreview
   m_PreviewWindow: {fileID: 0}
+<<<<<<< HEAD
   m_LastInspectedObjectInstanceID: -1594
   m_LastVerticalScrollValue: 0
 --- !u!114 &19
+=======
+  m_LastInspectedObjectInstanceID: -1858
+  m_LastVerticalScrollValue: 164
+--- !u!114 &18
+>>>>>>> parent of dad1ca8... Dynamic Jumping Added. Dynamic Camera System Added. Hang Time Implemented. Jump Buffer Implemented. Wall Sliding Implemented. Working on Wall Jumping...
 MonoBehaviour:
   m_ObjectHideFlags: 52
   m_CorrespondingSourceObject: {fileID: 0}
